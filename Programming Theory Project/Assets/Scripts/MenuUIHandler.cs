@@ -21,7 +21,10 @@ public class MenuUIHandler : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("MainScene");
+        if (!string.IsNullOrEmpty(GameManager.Instance.PlayerName))
+        {
+            SceneManager.LoadScene("MainScene");
+        }
     }
 
     public void ExitGame()
