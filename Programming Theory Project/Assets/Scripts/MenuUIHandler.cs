@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using UnityEditor.ShaderGraph;
 
 public class MenuUIHandler : MonoBehaviour
 {
@@ -16,7 +17,9 @@ public class MenuUIHandler : MonoBehaviour
 
     void UpdatePlayerName(string value)
     {
-        GameManager.Instance.PlayerName = value;
+        GameManager.Instance.PlayerName = value.ToUpper();
+        if (!string.IsNullOrEmpty(value))
+            playerNameInputField.GetComponent<Image>().color = Color.white;
     }
 
     public void StartGame()
@@ -24,6 +27,10 @@ public class MenuUIHandler : MonoBehaviour
         if (!string.IsNullOrEmpty(GameManager.Instance.PlayerName))
         {
             SceneManager.LoadScene("MainScene");
+        }
+        else
+        {
+            playerNameInputField.GetComponent<Image>().color = Color.red;
         }
     }
 
