@@ -11,7 +11,7 @@ public class MenuUIHandler : MonoBehaviour
 
     void Start()
     {
-        playerNameInputField.onValueChanged.AddListenter(UpdatePlayerName);
+        playerNameInputField.onValueChanged.AddListener(UpdatePlayerName);
     }
 
     void UpdatePlayerName(string value)
